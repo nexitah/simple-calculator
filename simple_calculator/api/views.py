@@ -18,16 +18,20 @@ class BasicCalculatorView:
         Return the operation of the requested values
         :return:
         """
+        if self.body == b'':
+            return Response(
+                status=400, json_body={
+                    'result': 'Body is empy, please provide an operation!'
+                })
+            
         body = json.loads(self.body.decode("utf-8"))
         calculator = Calculator(operation=body.get('operation'))
         success, result = calculator.calculate()
 
         if not success:
-            return Response(status=400, body=result)
+            return Response(status=400, json_body={'result': result})
 
-        return {
-            'result': result
-        }
+        return Response(status=200, json_body={'result': result})
 
     @view_config(route_name='calculator', renderer='json', request_method='GET')
     def get(self):
@@ -35,6 +39,6 @@ class BasicCalculatorView:
         Return the operation of the requested values
         :return:
         """
-        return {
-            'result': 'To try this new shinny simple_calculator use the POST'
-        }
+        return Response(
+            status=200,
+            json_body={'result': 'To try this new shinny simple_calculator use the POST'})
