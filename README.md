@@ -20,3 +20,18 @@ This project allows the calculation of simple arithmetic operations
         curl --request POST 'http://localhost:8000/calculator/' \
              --header 'Content-Type: application/json' \
              --data-raw '{"operation": "2 + 3"}'
+
+# Calculator api
+The calculator contains the following endpoints:
+
+### GET Request
+
+    GET http://localhost:8000/calculator/
+    Response application/json
+    
+### POST Request
+
+    POST http://localhost:8000/calculator/
+    Body Example value: {"operation": "2 + 3"}
+    Content type application/json
+    Response application/json
