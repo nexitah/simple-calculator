@@ -29,8 +29,6 @@ class Calculator:
         """
         self.value_1 = ast.literal_eval(self.value_1)
         self.value_2 = ast.literal_eval(self.value_2)
-        print('\033[32m{}\033[0m'.format(type(self.value_1)), flush=True)  # green
-        print('\033[32m{}\033[0m'.format(type(self.value_2)), flush=True)  # green
 
     def prepare_values_for_operation(self) -> Tuple[bool, str]:
         """
